@@ -3,9 +3,13 @@
 // ex. longestWord('Hi there, my name is Brad') === 'there,'
 
 function longestWord(sen) {
-  // SOLUTION 1 - Return a single longest word
-  // SOLUTION 2 - Return an array and include multiple words if they have the same length
-  // SOLUTION 3 - Only return an array if multiple words, otherwise return a string
+  const array = sen.split(' ');
+  const sameLength = new Array();
+  return array.reduce((a, b) => {
+    return a.length > b.length ? a :
+      a.length === b.length ? (sameLength.push(a, b), sameLength) :
+      b;
+  });
 }
 
 // CHALLENGE 2: ARRAY CHUNKING
@@ -13,13 +17,24 @@ function longestWord(sen) {
 // ex. chunkArray([1, 2, 3, 4, 5, 6, 7], 3) === [[1, 2, 3],[4, 5, 6],[7]]
 // ex. chunkArray([1, 2, 3, 4, 5, 6, 7], 2) === [[1, 2],[3, 4],[5, 6],[7]]
 
-function chunkArray(arr, len) {}
+function chunkArray(arr, len) {
+  const dataChunk = new Array();
+  const arrayChunk = new Array();
+  let i = 0;
+  while (i < arr.length) {
+    arrayChunk.push(arr.slice([i], [i + len]));
+    i += len;
+  }
+  return arrayChunk
+}
 
 // CHALLENGE 3: FLATTEN ARRAY
 // Take an array of arrays and flatten to a single array
 // ex. [[1, 2], [3, 4], [5, 6], [7]] = [1, 2, 3, 4, 5, 6, 7]
 
-function flattenArray(arrays) {}
+function flattenArray(arrays) {
+
+}
 
 // CHALLENGE 4: ANAGRAM
 // Return true if anagram and false if not
@@ -36,6 +51,11 @@ function isAnagram(str1, str2) {}
 function letterChanges(str) {}
 
 // Call Function
-const output = longestWord('Hello, my name is Brad');
+const output = flattenArray([
+  [1, 2],
+  [3, 4],
+  [5, 6],
+  [7]
+]);
 
 console.log(output);
